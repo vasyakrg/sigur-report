@@ -37,7 +37,21 @@ class Controller_search extends Controller
 //                $this->view->generate('main_view.php', 'template_view.php', null, true);
 
             }
-            else $this->view->generate('search_view.php', 'template_view.php', null, false);
+            else {
+                $current_month = date('m');
+                $current_year = date('Y');
+                $lastday = cal_days_in_month(CAL_GREGORIAN, $current_month, $current_year);
+                $datein = $current_year . '-' .$current_month . '-01 00:00:00';
+                $dateout = $current_year . '-' .$current_month .'-'.$lastday. ' 23:59:59';
+
+                $data = array(
+                    'datein' => $datein,
+                    'dateout' => $dateout
+                );
+
+                $this->view->generate('search_view.php', 'template_view.php', $data, false);
+            }
+
 //        } else {
 //            $data = array(
 //                'login' => 'вы не авторизованы',

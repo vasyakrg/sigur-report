@@ -2,8 +2,8 @@
 <p>
     <form method="post" name="form_search">
         <div class="box">
-            <p></p>Дата выдачи <input name="datein" type="text" value="2019-10-01 00:01:01" ></p>
-            <p></p>Дата забора <input name="dateout" type="text" value="2019-10-31 23:59:59"></p>
+            <p></p>Дата выдачи <input name="datein" type="text" value="<?php echo $data['datein'];?>"></p>
+            <p></p>Дата забора <input name="dateout" type="text" value="<?php echo $data['dateout'];?>"></p>
             <p>План
                 <select name="plan">
                     <option>Все</option>

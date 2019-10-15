@@ -15,10 +15,10 @@ class Controller_main extends Controller
 
     function action_index()
     {
-        session_start();
-        $auth = new Controller_auth();
-        if ($auth->getssesion())
-            $sess = true; else $sess = false;
+//        session_start();
+//        $auth = new Controller_auth();
+//        if ($auth->getssesion())
+//            $sess = true; else $sess = false;
 
 //            $columns = array(
 //          'name' => 'name',
@@ -29,14 +29,15 @@ class Controller_main extends Controller
 //        );
         $current_month = date('m');
         $current_year = date('Y');
-        $datein = $current_year .'-10-07' . ' 00:00:00';
-        $dateout = $current_year .'-10-13' . ' 23:59:59';
+        $lastday = cal_days_in_month(CAL_GREGORIAN, $current_month, $current_year);
+        $datein = $current_year . '-' .$current_month . '-01 00:00:00';
+        $dateout = $current_year . '-' .$current_month .'-'.$lastday. ' 23:59:59';
 
         $str = 'SELECT plans.VALUE, users.NAME, users.DATECRE, users.DATEEXP, datediff(users.DATEEXP, users.DATECRE) as qty FROM guestbindings as users, sideparamvalues as plans WHERE plans.OBJ_ID = users.ID and users.DATECRE >= "' . $datein . '" and users.DATEEXP <= "'. $dateout . '" ORDER BY plans.VALUE ASC';
 //        echo $str;
 
         $data = $this->model->get_data($str);
-        $this->view->generate('main_view.php', 'template_view.php', $data, $sess);
+        $this->view->generate('main_view.php', 'template_view.php', $data, false);
     }
 
 }
