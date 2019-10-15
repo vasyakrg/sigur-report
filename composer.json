@@ -1,0 +1,21 @@
+{
+    "name": "root/ping.2",
+    "type": "project",
+    "require": {
+        "phpunit/phpunit": "^7.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\Core\\": "App/Core",
+            "App\\Controllers\\": "App/Controllers",
+            "App\\Models\\": "App/Models"
+        }
+    },
+    "license": "GNU",
+    "authors": [
+        {
+            "name": "Vassiliy Yegorov",
+            "email": "vasyakrg@gmail.com"
+        }
+    ]
+}
