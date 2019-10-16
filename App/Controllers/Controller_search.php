@@ -20,8 +20,8 @@ class Controller_search extends Controller
 //            session_start();
             if (isset($_POST["submit"]) && !empty($_POST["submit"]))
             {
-                $datein = $_POST['datein'];
-                $dateout = $_POST['dateout'];
+                $datein = $_POST['datein'] . ' 00:00:00';
+                $dateout = $_POST['dateout'] . ' 23:59:59';
                 $plan = $_POST['plan'];
 
                 if ($plan == 'Все') {$plan='%';}
@@ -41,8 +41,8 @@ class Controller_search extends Controller
                 $current_month = date('m');
                 $current_year = date('Y');
                 $lastday = cal_days_in_month(CAL_GREGORIAN, $current_month, $current_year);
-                $datein = $current_year . '-' .$current_month . '-01 00:00:00';
-                $dateout = $current_year . '-' .$current_month .'-'.$lastday. ' 23:59:59';
+                $datein = $current_year . '-' .$current_month . '-01';
+                $dateout = $current_year . '-' .$current_month .'-'.$lastday;
 
                 $data = array(
                     'datein' => $datein,
